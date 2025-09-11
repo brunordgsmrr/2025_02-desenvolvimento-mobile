@@ -1,0 +1,6 @@
+Criar CRUD
+- user
+- category
+- sales
+- product
+- client
