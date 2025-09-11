@@ -1,10 +1,9 @@
-export class DeleteUserService {
+export class DeleteSaleService {
     async execute(id: any) {
         console.log(id);
-        var msg = {
+
+        return {
             message: "Registro excluido com sucesso",
         };
-
-        return msg;
     }
 }

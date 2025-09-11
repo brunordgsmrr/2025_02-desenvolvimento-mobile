@@ -1,4 +1,4 @@
-export class DeleteUserService {
+class DeleteCategoryService {
     async execute(id: any) {
         console.log(id);
         var msg = {
@@ -8,3 +8,5 @@ export class DeleteUserService {
         return msg;
     }
 }
+
+export { DeleteCategoryService };

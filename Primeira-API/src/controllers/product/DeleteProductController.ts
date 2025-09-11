@@ -1,9 +1,14 @@
-import {Request, Response} from "express";
+import { Request, Response } from "express";
+import { DeleteProductService } from "../../services/product/DeleteProductService";
 
-class DeleteProductController{
+export class DeleteProductController {
     async handle(request: Request, response: Response) {
-        const {id} = request.params;
-        response.json({message: "Registro excluído com Sucesso", id});
+        const deleteProductService = new DeleteProductService();
+
+        const { id } = request.params;
+
+        const resp = await deleteProductService.execute(id);
+
+        response.json({ message: resp });
     }
 }
-export {DeleteProductController};

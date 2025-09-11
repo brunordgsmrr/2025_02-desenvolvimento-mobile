@@ -1,14 +1,19 @@
-import { Request, response, Response } from 'express';
+import { Request, Response } from "express";
+import { CreateCategoryService } from "../../services/category/CreateCategoryService";
 
-class CreateCategoryController{
-    async handle(request: Request, response: Response){
-        const {id, name, description} = request.body;
-        const category ={
-            id: id,
+class CreateCategoryController {
+    async handle(request: Request, response: Response) {
+        const createCategoryService = new CreateCategoryService();
+        const { name, description } = request.body;
+
+        const category = {
             name: name,
-            description: description
-        }
-        response.json({message: "Registro incluido com Sucesso"});
+            description: description,
+        };
+
+        createCategoryService.execute(category);
+
+        response.json({ message: "Registro incluido com Sucesso" });
     }
 }
-export {CreateCategoryController};
+export { CreateCategoryController };

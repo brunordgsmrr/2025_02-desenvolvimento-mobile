@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
+import { CreateProductService } from "../../services/product/CreateProductService";
 
-class CreateProductController{
+class CreateProductController {
     async handle(request: Request, response: Response) {
-        const {id, name, EAN, price, description, caregoryId} = request.body;
-        const product ={
-            id: id,
-            name: name,
-            EAN: EAN,
-            price: price,
-            description: description,
-            caregoryId: caregoryId
-        }
-        response.json({message: "Registro incluido com Sucesso"});
+        const createProductService = new CreateProductService();
+
+        const { name, EAN, price, description, categoryId } = request.body;
+
+        const product = { name, EAN, price, description, categoryId };
+
+        const resp = await createProductService.execute(product);
+
+        response.json({ message: "Registro incluido com Sucesso", data: resp });
     }
 }
 
-export {CreateProductController};
+export { CreateProductController };

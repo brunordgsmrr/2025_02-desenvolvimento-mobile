@@ -58,6 +58,7 @@ const authenticateUserController = new AuthenticateUserController();
 
 const router = Router();
 router.post("/login", authenticateUserController.handle);
+
 router.use(ensureAuthenticated);
 
 // User Routes

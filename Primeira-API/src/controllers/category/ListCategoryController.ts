@@ -1,14 +1,13 @@
-import {Request, Response} from 'express';
+import { Request, Response } from "express";
+import { ListCategoryService } from "../../services/category/ListCategoryService";
 
-class ListCategoryController{
-    async handle(request: Request, response: Response){
-        const categories =[
-            {id: 1, name: "Bebidas", description: "Bebidas Alcoólicas e Não Alcoólicas"},
-            {id: 2, name: "Laticínios", description: "Leites, Queijos e Derivados"},
-            {id: 3, name: "Higiene", description: "Produtos de Higiene Pessoal"},
-            {id: 4, name: "Limpeza", description: "Produtos de Limpeza Doméstica"}
-        ]
-        return response.json(categories);
+class ListCategoryController {
+    async handle(request: Request, response: Response) {
+        const listCategoryService = new ListCategoryService();
+
+        const categories = await listCategoryService.execute();
+
+        response.json(categories);
     }
 }
-export {ListCategoryController};
+export { ListCategoryController };

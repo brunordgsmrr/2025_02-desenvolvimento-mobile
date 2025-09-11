@@ -1,4 +1,4 @@
-export class DeleteUserService {
+export class DeleteClientService {
     async execute(id: any) {
         console.log(id);
         var msg = {
