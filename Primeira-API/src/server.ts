@@ -3,6 +3,7 @@ import express from "express";
 import { router } from "./routes";
 import "express-async-error";
 import "reflect-metadata";
+import "./database";
 
 const app = express();
 // npm install typescript express ts-node-dev

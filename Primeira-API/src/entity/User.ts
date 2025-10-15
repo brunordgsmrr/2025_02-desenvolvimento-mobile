@@ -1,18 +1,35 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-@Entity()
-export class User {
+import { v4 as uuid } from "uuid";
 
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column()
-    firstName: string;
+@Entity("users")
+class User {
+    @PrimaryColumn()
+    readonly id!: string;
 
     @Column()
-    lastName: string;
+    name!: string;
 
     @Column()
-    age: number;
+    email!: string;
 
+    @Column()
+    admin!: boolean;
+
+    @Column()
+    password!: string;
+
+    @CreateDateColumn()
+    created_at!: Date;
+
+    @UpdateDateColumn()
+    update_at!: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuid();
+        }
+    }
 }
+
+export { User };

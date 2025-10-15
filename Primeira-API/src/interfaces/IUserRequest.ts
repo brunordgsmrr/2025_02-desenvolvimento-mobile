@@ -1,5 +1,5 @@
 export interface IUserRequest {
-    id?: number;
+    id?: string;
     name: string;
     email: string;
     admin?: boolean;

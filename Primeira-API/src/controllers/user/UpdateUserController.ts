@@ -8,7 +8,7 @@ class UpdateUserController {
         const id = request.params.id;
         const { name, email, admin, password } = request.body;
 
-        updateUserService.execute({ name, email, admin, password });
+        updateUserService.execute({ id, name, email, admin, password });
         response.json({
             message: "Registro atualizado com Sucesso",
             id,

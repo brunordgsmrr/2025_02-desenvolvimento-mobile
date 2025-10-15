@@ -59,8 +59,6 @@ const authenticateUserController = new AuthenticateUserController();
 const router = Router();
 router.post("/login", authenticateUserController.handle);
 
-router.use(ensureAuthenticated);
-
 // User Routes
 router.post("/users", createUserController.handle);
 router.get("/users", listUserController.handle);
@@ -86,5 +84,7 @@ router.post("/sales", createSalesController.handle);
 router.get("/sales", listSalesController.handle);
 router.delete("/sales/:id", deleteSalesController.handle);
 router.put("/sales/:id", updateSalesController.handle);
+
+router.use(ensureAuthenticated);
 
 export { router };
